@@ -1,0 +1,4 @@
+config.yml
+output/*
+Gemfile.lock
+.idea/*
