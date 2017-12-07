@@ -6,7 +6,7 @@
 
 ## Install
 1. Clone the repo: `git clone https://github.com/Seriell/EmojiDumper.git`
-2. cd into the repo: `cd Yuuki-Bot`
+2. cd into the repo: `cd EmojiDumper`
 3. Edit the configuration with your user/bot token.
 4. Install bundler if you haven't already: `gem install bundler`
 5. Install the bundle: `bundle install`
