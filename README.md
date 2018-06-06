@@ -25,6 +25,6 @@ Enjoy~
 
 # Credits
 
-Kudos to the following users for helping me ([Seriel](https://github.com/Seriell)) out:
+Kudos to the following users for helping me ([Seriel](https://owo.codes/Seriel)) out:
 
 - [meew0](https://github.com/meew0/) for [Discordrb](https://github.com/meew0/discordrb)
