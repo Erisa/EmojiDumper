@@ -29,11 +29,11 @@ bot.servers.each {|id,server|
       if emoji.animated
         url = "https://cdn.discordapp.com/emojis/#{id}.gif"
         Dir.mkdir("output/#{server.name}_#{server.id}/animated") unless File.exists?("output/#{server.name}_#{server.id}/animated/")
-        IO.copy_stream(open(url), "output/#{server.name}_#{server.id}/animated/#{emoji.name}_#{emoji.id}.gif")
+        IO.copy_stream(OpenURI.open_uri(url), "output/#{server.name}_#{server.id}/animated/#{emoji.name}_#{emoji.id}.gif")
       else
         url = "https://cdn.discordapp.com/emojis/#{id}.png"
         Dir.mkdir("output/#{server.name}_#{server.id}/static") unless File.exists?("output/#{server.name}_#{server.id}/static/")
-        IO.copy_stream(open(url), "output/#{server.name}_#{server.id}/static/#{emoji.name}_#{emoji.id}.png")
+        IO.copy_stream(OpenURI.open_uri(url), "output/#{server.name}_#{server.id}/static/#{emoji.name}_#{emoji.id}.png")
       end
     }
   end
