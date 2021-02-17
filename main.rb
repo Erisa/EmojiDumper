@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+$stdout.sync = true
+
 require 'yaml'
 require 'open-uri'
 
