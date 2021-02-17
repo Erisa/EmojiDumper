@@ -16,4 +16,3 @@
 1. Pull any changes from the repo: `git pull`
 2. Update the bundle: `bundle update`
 3. Run the bot: `bundle exec ruby run.rb`
-4. 
