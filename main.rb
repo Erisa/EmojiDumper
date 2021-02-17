@@ -1,8 +1,12 @@
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'discordrb'
 require 'yaml'
 require 'open-uri'
+
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
 
 @config = YAML.load_file('config.yml')
 
