@@ -7,7 +7,7 @@
 ## Install
 1. Clone the repo: `git clone https://owo.codes/Seriel/EmojiDumper.git`
 2. cd into the repo: `cd EmojiDumper`
-3. Edit the configuration with your user/bot token.
+3. Edit the configuration with your token.
 4. Install bundler if you haven't already: `gem install bundler`
 5. Install the bundle: `bundle install`
 6. Run the bot: `bundle exec ruby run.rb`
