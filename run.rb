@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'discordrb'
 require 'yaml'
 require 'open-uri'
@@ -16,29 +18,35 @@ puts "Logged in as: #{bot.profile.distinct}"
 puts "Servers: #{bot.servers.count}"
 puts "Total Emoji: #{bot.emojis.count}"
 
-Dir.mkdir('output') unless File.exists?('output')
+Dir.mkdir('output') unless File.exist?('output')
 
-bot.servers.each {|id,server|
+bot.servers.each do |_id, server|
   if server.emojis.count.zero? || server.emojis.nil?
     puts "Server '#{server.name}' has no emoji, skipping..."
     next
   else
-    Dir.mkdir("output/#{server.name}_#{server.id}") unless File.exists?("output/#{server.name}_#{server.id}")
+    Dir.mkdir("output/#{server.name}_#{server.id}") unless File.exist?("output/#{server.name}_#{server.id}")
     puts "Downloading emoji from '#{server.name}'..."
-    server.emojis.each { |id, emoji|
+    server.emojis.each do |id, emoji|
       if emoji.animated
         url = "https://cdn.discordapp.com/emojis/#{id}.gif"
-        Dir.mkdir("output/#{server.name}_#{server.id}/animated") unless File.exists?("output/#{server.name}_#{server.id}/animated/")
-        IO.copy_stream(OpenURI.open_uri(url), "output/#{server.name}_#{server.id}/animated/#{emoji.name}_#{emoji.id}.gif")
+        unless File.exist?("output/#{server.name}_#{server.id}/animated/")
+          Dir.mkdir("output/#{server.name}_#{server.id}/animated")
+        end
+        IO.copy_stream(OpenURI.open_uri(url),
+                       "output/#{server.name}_#{server.id}/animated/#{emoji.name}_#{emoji.id}.gif")
       else
         url = "https://cdn.discordapp.com/emojis/#{id}.png"
-        Dir.mkdir("output/#{server.name}_#{server.id}/static") unless File.exists?("output/#{server.name}_#{server.id}/static/")
+        unless File.exist?("output/#{server.name}_#{server.id}/static/")
+          Dir.mkdir("output/#{server.name}_#{server.id}/static")
+        end
         IO.copy_stream(OpenURI.open_uri(url), "output/#{server.name}_#{server.id}/static/#{emoji.name}_#{emoji.id}.png")
       end
-    }
+    end
   end
-}
+end
 
 puts 'All done here! You can find your emojis in the "output" folder!'
-#TODO Fix this
-puts 'Note: Because I\'m lazy, you will have to rename/delete the output folder before running this again, or weird things happen.'
+# TODO: Fix this
+puts 'Note: Because I\'m lazy, you will have to rename/delete the output folder before running this again,'\
+    'or weird things happen.'

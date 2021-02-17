@@ -1,2 +1,4 @@
 token: Mjc5ODEetc
+# Read this before even thinking about setting to 'user':
+# https://support.discord.com/hc/articles/115002192352-Automated-user-accounts-self-bots-
 type: :bot
