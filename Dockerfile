@@ -1,13 +1,28 @@
-FROM ruby:3.0-alpine
+ARG RUBY_VERSION=3.1.0
+
+FROM ruby:${RUBY_VERSION}-alpine as builder
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
-# https://stackoverflow.com/a/42145848/13110561
-RUN apk add --no-cache git build-base && bundle install && apk del --purge build-base git
+
+RUN apk add --no-cache git build-base
+RUN bundle config path vendor/bundle && bundle install
+
+
+##########
+# RUNNER #
+##########
+FROM ruby:${RUBY_VERSION}-alpine
+
+WORKDIR /app
+
+# Copy vendor cache over from builder
+RUN bundle config path vendor/bundle
+COPY --from=builder /app/vendor ./vendor
 COPY . .
 
 CMD ["./main.rb"]
