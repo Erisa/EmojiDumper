@@ -1,4 +1,5 @@
 config.yml
 output/*
+!.gitkeep
 .idea/*
 .bundle/*

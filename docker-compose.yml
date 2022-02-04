@@ -1,8 +1,11 @@
 version: '2.3'
 services: 
-    yuuki:
+    emojidumper:
         image: "ghcr.io/erisa/emojidumper:latest"
         volumes:
             - type: bind
               source: ./config.yml
               target: /app/config.yml
+            - type: bind
+              source: ./output
+              target: /app/output

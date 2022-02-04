@@ -16,7 +16,8 @@ or
 ---
 
 ## Running (Docker)
-4. `docker-compose up`
+4. `docker-compose up`  
+Images will appear in the `output` directory.
 
 ## Updating (Docker)
 5. `git pull && docker-compose pull`
@@ -26,7 +27,8 @@ or
 ## Running (Standalone)
 4. Install bundler if you haven't already: `gem install bundler`
 5. Install the bundle: `bundle install`
-6. Run the bot: `./main.rb`
+6. Run the bot: `./main.rb`  
+Images will appear in the `output` directory.
 
 ## Updating (Standalone)
 7. Pull any changes from the repo: `git pull`
