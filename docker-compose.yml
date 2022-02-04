@@ -5,4 +5,4 @@ services:
         volumes:
             - type: bind
               source: ./config.yml
-              target: /usr/src/app/config.yml
+              target: /app/config.yml
