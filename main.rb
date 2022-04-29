@@ -39,14 +39,19 @@ bot.servers.each do |_id, server|
         unless File.exist?("output/#{server.name}_#{server.id}/animated/")
           Dir.mkdir("output/#{server.name}_#{server.id}/animated")
         end
-        IO.copy_stream(OpenURI.open_uri(url),
-                       "output/#{server.name}_#{server.id}/animated/#{emoji.name}_#{emoji.id}.gif")
+        Thread.new do
+          IO.copy_stream(OpenURI.open_uri(url),
+                         "output/#{server.name}_#{server.id}/animated/#{emoji.name}_#{emoji.id}.gif")
+        end
       else
         url = "https://cdn.discordapp.com/emojis/#{id}.png"
         unless File.exist?("output/#{server.name}_#{server.id}/static/")
           Dir.mkdir("output/#{server.name}_#{server.id}/static")
         end
-        IO.copy_stream(OpenURI.open_uri(url), "output/#{server.name}_#{server.id}/static/#{emoji.name}_#{emoji.id}.png")
+        Thread.new do
+          IO.copy_stream(OpenURI.open_uri(url),
+                         "output/#{server.name}_#{server.id}/static/#{emoji.name}_#{emoji.id}.png")
+        end
       end
     end
   end
