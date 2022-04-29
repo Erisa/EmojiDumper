@@ -60,4 +60,4 @@ end
 puts 'All done here! You can find your emojis in the "output" folder!'
 # TODO: Fix this
 puts 'Note: Because I\'m lazy, you will have to rename/delete the output folder before running this again,'\
-    'or weird things happen.'
+     'or weird things happen.'
